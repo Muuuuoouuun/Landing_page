@@ -2,20 +2,22 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { DemoModal } from "./DemoModal"
 import { cn } from "@/lib/utils"
 
 const navItems = [
-    { name: "Product", href: "#solution" },
-    { name: "Use Cases", href: "#use-cases" },
-    { name: "Dashboard", href: "#dashboard" },
-    { name: "Outcomes", href: "#outcomes" },
-    { name: "FAQ", href: "#faq" },
+    { name: "Product", href: "/product" },
+    { name: "Use Cases", href: "/#use-cases" },
+    { name: "Pricing", href: "/pricing" },
+    { name: "Contact", href: "/contact" },
 ]
 
 export function Header() {
     const [isScrolled, setIsScrolled] = React.useState(false)
+    const pathname = usePathname()
+    const isHome = pathname === "/"
 
     React.useEffect(() => {
         const handleScroll = () => {
@@ -29,7 +31,7 @@ export function Header() {
         <header
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-                isScrolled
+                isScrolled || !isHome
                     ? "bg-white/80 backdrop-blur-md border-b shadow-sm py-4"
                     : "bg-transparent py-6"
             )}
@@ -49,7 +51,10 @@ export function Header() {
                         <Link
                             key={item.name}
                             href={item.href}
-                            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                            className={cn(
+                                "text-sm font-medium transition-colors hover:text-primary",
+                                pathname === item.href ? "text-primary font-bold" : "text-muted-foreground"
+                            )}
                         >
                             {item.name}
                         </Link>
