@@ -32,16 +32,27 @@ export function Outcomes() {
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col md:flex-row gap-12 items-center">
                     <div className="w-full md:w-1/3">
-                        <h2 className="text-3xl font-bold tracking-tight mb-6">
-                            Transform Your Academy's DNA
+                        <span className="inline-block py-1 px-3 rounded-full bg-slate-700 text-slate-300 text-xs font-semibold uppercase tracking-wider mb-4">
+                            Proven Results
+                        </span>
+                        <h2 className="text-3xl font-bold tracking-tight mb-4">
+                            The Before &amp; After Every Academy Deserves
                         </h2>
-                        <p className="text-slate-400 text-lg mb-8">
-                            Move from a manual, variance-prone local operation to a scalable, data-driven education powerhouse.
+                        <p className="text-slate-400 text-base mb-8">
+                            From variance-prone manual ops to a scalable, data-driven education powerhouse.
                         </p>
-                        <div className="p-6 bg-slate-800 rounded-xl border border-slate-700 inline-block">
-                            <div className="text-sm text-slate-400 uppercase tracking-wider font-semibold mb-2">Avg Time Saved</div>
-                            <div className="text-5xl font-bold text-blue-400">15 hrs</div>
-                            <div className="text-sm text-slate-400 mt-2">per teacher / week</div>
+                        <div className="grid grid-cols-1 gap-3">
+                            {[
+                                { value: "60%", label: "Reduction in admin workload" },
+                                { value: "+38%", label: "Average revenue growth" },
+                                { value: "48 hrs", label: "To deploy a new branch" },
+                            ].map((stat, i) => (
+                                <div key={i} className="flex items-center gap-4 p-4 bg-slate-800 rounded-xl border border-slate-700">
+                                    <div className="text-2xl font-black text-white shrink-0 w-16 text-right">{stat.value}</div>
+                                    <div className="w-px h-8 bg-slate-600 shrink-0" />
+                                    <div className="text-sm text-slate-400">{stat.label}</div>
+                                </div>
+                            ))}
                         </div>
                     </div>
 

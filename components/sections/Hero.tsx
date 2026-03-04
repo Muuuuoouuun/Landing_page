@@ -59,13 +59,24 @@ export function Hero() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.8, delay: 0.5 }}
-                        className="mt-12 flex items-center justify-center gap-8 text-slate-400 grayscale opacity-70"
+                        className="mt-12 w-full border-t border-slate-100 pt-8"
                     >
-                        {/* Social Proof Placeholders */}
-                        <div className="font-bold text-xl">ACADEMY ONE</div>
-                        <div className="font-bold text-xl">EDU GROUP</div>
-                        <div className="font-bold text-xl">GLOBAL INSTITUTE</div>
-                        <div className="font-bold text-xl">FUTURE SCHOOL</div>
+                        <p className="text-xs text-slate-400 text-center uppercase tracking-widest font-medium mb-6">
+                            Trusted by 500+ academies across Asia
+                        </p>
+                        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-14">
+                            {[
+                                { value: "500+", label: "Academies" },
+                                { value: "120k+", label: "Students" },
+                                { value: "15 hrs", label: "Saved / Teacher / Week" },
+                                { value: "4.8★", label: "Avg Parent Rating" },
+                            ].map((stat, i) => (
+                                <div key={i} className="text-center">
+                                    <div className="text-2xl font-bold text-primary">{stat.value}</div>
+                                    <div className="text-xs text-slate-400 mt-0.5">{stat.label}</div>
+                                </div>
+                            ))}
+                        </div>
                     </motion.div>
                 </div>
 
@@ -89,33 +100,58 @@ export function Hero() {
                         {/* Mock Body */}
                         <div className="grid grid-cols-12 gap-0 min-h-[400px]">
                             {/* Sidebar */}
-                            <div className="hidden md:block col-span-2 border-r bg-slate-50/50 p-4 space-y-4">
-                                <div className="h-8 w-full bg-blue-100 rounded-md" />
-                                <div className="h-4 w-3/4 bg-slate-200 rounded-md" />
-                                <div className="h-4 w-3/4 bg-slate-200 rounded-md" />
-                                <div className="h-4 w-3/4 bg-slate-200 rounded-md" />
+                            <div className="hidden md:flex col-span-2 border-r bg-slate-50/80 p-4 flex-col gap-1">
+                                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-2 mb-2">Menu</div>
+                                {["Dashboard", "Classes", "Students", "Reports", "Settings"].map((item, i) => (
+                                    <div key={i} className={`flex items-center gap-2 px-2 py-1.5 rounded-md ${i === 0 ? "bg-blue-600 text-white" : "text-slate-500"}`}>
+                                        <div className={`w-1.5 h-1.5 rounded-full ${i === 0 ? "bg-blue-200" : "bg-slate-300"}`} />
+                                        <span className="text-[11px] font-medium">{item}</span>
+                                    </div>
+                                ))}
                             </div>
                             {/* Main Content */}
-                            <div className="col-span-12 md:col-span-10 p-6 bg-white">
-                                <div className="flex justify-between items-center mb-8">
-                                    <div className="space-y-2">
-                                        <div className="h-6 w-48 bg-slate-900 rounded-md" />
-                                        <div className="h-4 w-32 bg-slate-300 rounded-md" />
+                            <div className="col-span-12 md:col-span-10 p-5 bg-white">
+                                <div className="flex justify-between items-center mb-5">
+                                    <div>
+                                        <div className="text-sm font-bold text-slate-900">Academy Overview</div>
+                                        <div className="text-[11px] text-slate-400">Week 8 of Spring Semester</div>
                                     </div>
-                                    <div className="h-10 w-32 bg-primary rounded-md shadow-sm" />
+                                    <div className="h-7 px-3 bg-blue-600 rounded-md text-white text-[11px] font-semibold flex items-center">+ New Class</div>
                                 </div>
-                                <div className="grid grid-cols-3 gap-6 mb-8">
-                                    {[1, 2, 3].map(i => (
-                                        <div key={i} className="h-32 rounded-xl border bg-slate-50 p-4 space-y-4">
-                                            <div className="h-8 w-8 rounded-full bg-blue-100" />
-                                            <div className="h-8 w-24 bg-slate-200 rounded-md" />
+                                {/* KPI Cards */}
+                                <div className="grid grid-cols-3 gap-3 mb-5">
+                                    {[
+                                        { label: "Attendance", value: "98.2%", delta: "+2.1%", color: "text-green-600" },
+                                        { label: "Avg Score", value: "84.5", delta: "+5.4%", color: "text-green-600" },
+                                        { label: "At-Risk", value: "3", delta: "-2 this wk", color: "text-blue-600" },
+                                    ].map((kpi, i) => (
+                                        <div key={i} className="rounded-lg border bg-slate-50/80 p-3">
+                                            <div className="text-[10px] text-slate-400 font-medium uppercase">{kpi.label}</div>
+                                            <div className="text-lg font-bold text-slate-900 mt-0.5">{kpi.value}</div>
+                                            <div className={`text-[10px] font-semibold mt-0.5 ${kpi.color}`}>{kpi.delta}</div>
                                         </div>
                                     ))}
                                 </div>
-                                <div className="h-64 rounded-xl border bg-slate-50 flex items-end justify-around p-8 pb-0 gap-4">
-                                    {[40, 70, 50, 90, 60, 80, 45].map((h, i) => (
-                                        <div key={i} className="w-full bg-blue-200 rounded-t-lg" style={{ height: `${h}%` }} />
-                                    ))}
+                                {/* Bar Chart */}
+                                <div className="rounded-lg border bg-slate-50/80 p-3">
+                                    <div className="text-[11px] font-semibold text-slate-600 mb-3">Engagement Score by Class</div>
+                                    <div className="flex items-end justify-around gap-2 h-28 pb-1">
+                                        {[
+                                            { h: 40, label: "A1", score: "65" },
+                                            { h: 70, label: "A2", score: "88" },
+                                            { h: 50, label: "B1", score: "72" },
+                                            { h: 90, label: "B2", score: "92" },
+                                            { h: 60, label: "C1", score: "80" },
+                                            { h: 80, label: "C2", score: "85" },
+                                            { h: 45, label: "D1", score: "68" },
+                                        ].map((bar, i) => (
+                                            <div key={i} className="flex flex-col items-center gap-1 flex-1">
+                                                <span className="text-[9px] text-slate-500">{bar.score}</span>
+                                                <div className="w-full bg-blue-500 rounded-t-sm" style={{ height: `${bar.h}%` }} />
+                                                <span className="text-[9px] text-slate-400">{bar.label}</span>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         </div>
