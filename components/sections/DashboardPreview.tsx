@@ -27,32 +27,32 @@ export function DashboardPreview() {
     return (
         <section id="dashboard" className="py-24 bg-white">
             <div className="container mx-auto px-4 md:px-6">
-                <div className="mb-12 flex flex-col md:flex-row items-end justify-between gap-6">
-                    <div className="max-w-2xl">
-                        <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl mb-4">
-                            Data-Driven Decisions, Instantly
-                        </h2>
-                        <p className="text-lg text-muted-foreground">
-                            Stop guessing. See exactly how your classes, teachers, and students are performing with real-time analytics.
-                        </p>
-                    </div>
-                    <div className="flex gap-4">
-                        {/* Simple KPI Cards */}
-                        <div className="bg-slate-50 border rounded-lg p-4 w-32">
-                            <div className="text-muted-foreground text-xs font-medium uppercase">Attendance</div>
-                            <div className="text-2xl font-bold text-slate-900 mt-1">98.2%</div>
-                            <div className="text-green-600 text-xs flex items-center mt-1">
-                                <ArrowUpRight className="w-3 h-3 mr-1" /> +2.1%
+                {/* Section Header */}
+                <div className="text-center max-w-2xl mx-auto mb-10">
+                    <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl mb-4">
+                        Data-Driven Decisions, Instantly
+                    </h2>
+                    <p className="text-lg text-muted-foreground">
+                        Stop guessing. See exactly how your classes, teachers, and students are performing with real-time analytics.
+                    </p>
+                </div>
+
+                {/* KPI Strip */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+                    {[
+                        { label: "Attendance Rate", value: "98.2%", delta: "+2.1%", up: true },
+                        { label: "Avg Engagement Score", value: "84.5", delta: "+5.4%", up: true },
+                        { label: "Homework Completion", value: "91%", delta: "+26pp", up: true },
+                        { label: "At-Risk Students", value: "3", delta: "↓ from 9", up: true },
+                    ].map((kpi, i) => (
+                        <div key={i} className="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                            <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide mb-2">{kpi.label}</div>
+                            <div className="text-3xl font-bold text-slate-900">{kpi.value}</div>
+                            <div className="text-green-600 text-xs font-semibold flex items-center mt-1.5">
+                                <ArrowUpRight className="w-3 h-3 mr-1" />{kpi.delta}
                             </div>
                         </div>
-                        <div className="bg-slate-50 border rounded-lg p-4 w-32">
-                            <div className="text-muted-foreground text-xs font-medium uppercase">Avg Score</div>
-                            <div className="text-2xl font-bold text-slate-900 mt-1">84.5</div>
-                            <div className="text-green-600 text-xs flex items-center mt-1">
-                                <ArrowUpRight className="w-3 h-3 mr-1" /> +5.4%
-                            </div>
-                        </div>
-                    </div>
+                    ))}
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-8">
