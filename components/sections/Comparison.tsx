@@ -40,16 +40,17 @@ const rows = [
 
 export function Comparison() {
     return (
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-[#FAF7F0]">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="text-center max-w-3xl mx-auto mb-14">
-                    <span className="inline-block py-1 px-3 rounded-full bg-slate-200 text-slate-600 text-sm font-semibold mb-4">
+                    <span className="inline-block py-1 px-3 rounded-full bg-[#E8EDD4] border border-[#C8D49A] text-[#46521F] text-xs font-black uppercase tracking-wider mb-4">
                         Why Switch?
                     </span>
-                    <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl mb-4">
-                        EduScale vs. Traditional Setup
+                    <h2 className="font-display text-4xl md:text-5xl font-black tracking-tight text-[#1C2010] mb-4 leading-tight">
+                        EduScale vs.{" "}
+                        <span className="text-[#5C6B2E] italic">Traditional Setup</span>
                     </h2>
-                    <p className="text-lg text-muted-foreground">
+                    <p className="text-lg text-[#5a5748] font-medium">
                         See exactly what changes when you move from manual to modern.
                     </p>
                 </div>
@@ -59,17 +60,17 @@ export function Comparison() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="max-w-4xl mx-auto overflow-hidden rounded-2xl border border-slate-200 shadow-lg bg-white"
+                    className="max-w-4xl mx-auto overflow-hidden rounded-2xl border border-[#DDD8CC] shadow-lg bg-white"
                 >
                     {/* Table Header */}
-                    <div className="grid grid-cols-3 bg-slate-900 text-white text-sm font-semibold">
-                        <div className="py-4 px-6 text-slate-400 text-xs uppercase tracking-wider">Area</div>
-                        <div className="py-4 px-6 border-l border-slate-700 flex items-center gap-2">
-                            <X className="w-4 h-4 text-red-400" />
+                    <div className="grid grid-cols-3 bg-[#1C2010] text-white text-sm font-black">
+                        <div className="py-4 px-6 text-white/40 text-xs uppercase tracking-wider">Area</div>
+                        <div className="py-4 px-6 border-l border-[#303912] flex items-center gap-2 text-white/70">
+                            <X className="w-4 h-4 text-red-400/80" />
                             Traditional
                         </div>
-                        <div className="py-4 px-6 border-l border-slate-700 flex items-center gap-2 text-blue-300">
-                            <Check className="w-4 h-4 text-green-400" />
+                        <div className="py-4 px-6 border-l border-[#303912] flex items-center gap-2 text-[#d0db9e]">
+                            <Check className="w-4 h-4 text-[#94ab3e]" />
                             With EduScale
                         </div>
                     </div>
@@ -82,17 +83,17 @@ export function Comparison() {
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.07, duration: 0.4 }}
                             viewport={{ once: true }}
-                            className={`grid grid-cols-3 text-sm border-t border-slate-100 ${index % 2 === 0 ? "bg-white" : "bg-slate-50/60"}`}
+                            className={`grid grid-cols-3 text-sm border-t border-[#E8E3D8] ${index % 2 === 0 ? "bg-white" : "bg-[#FAF7F0]"}`}
                         >
-                            <div className="py-4 px-6 font-semibold text-slate-700 flex items-center">
+                            <div className="py-4 px-6 font-black text-[#1C2010] flex items-center text-xs uppercase tracking-wide">
                                 {row.feature}
                             </div>
-                            <div className="py-4 px-6 border-l border-slate-100 text-slate-500 flex items-start gap-2">
-                                <X className="w-3.5 h-3.5 text-red-400 mt-0.5 shrink-0" />
+                            <div className="py-4 px-6 border-l border-[#E8E3D8] text-[#9a9585] flex items-start gap-2 font-medium">
+                                <X className="w-3.5 h-3.5 text-red-400/70 mt-0.5 shrink-0" />
                                 {row.traditional}
                             </div>
-                            <div className="py-4 px-6 border-l border-slate-100 text-slate-800 font-medium flex items-start gap-2">
-                                <Check className="w-3.5 h-3.5 text-green-500 mt-0.5 shrink-0" />
+                            <div className="py-4 px-6 border-l border-[#E8E3D8] text-[#1C2010] font-bold flex items-start gap-2">
+                                <Check className="w-3.5 h-3.5 text-[#5C6B2E] mt-0.5 shrink-0" />
                                 {row.eduscale}
                             </div>
                         </motion.div>
@@ -101,9 +102,9 @@ export function Comparison() {
 
                 {/* Soft CTA */}
                 <div className="text-center mt-10">
-                    <p className="text-slate-500 mb-4 text-sm">Ready to make the switch?</p>
+                    <p className="text-[#9a9585] mb-4 text-sm font-semibold">Seen enough? Let's talk about your academy.</p>
                     <DemoModal>
-                        <Button size="lg" className="px-8">
+                        <Button size="lg" className="px-8 bg-[#5C6B2E] text-[#FAF7F0] hover:bg-[#46521F] font-bold rounded-xl shadow-lg shadow-[#5C6B2E]/20">
                             Book a Free Demo
                         </Button>
                     </DemoModal>
