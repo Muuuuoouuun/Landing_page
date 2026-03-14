@@ -6,12 +6,14 @@ import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { DemoModal } from "./DemoModal"
 import { cn } from "@/lib/utils"
+import { trackEvent } from "@/lib/analytics"
 
 const navItems = [
-    { name: "Product", href: "/product" },
-    { name: "Use Cases", href: "/#use-cases" },
-    { name: "Pricing", href: "/pricing" },
-    { name: "Contact", href: "/contact" },
+    { name: "제품 소개", href: "/product" },
+    { name: "활용 사례", href: "/#use-cases" },
+    { name: "요금제", href: "/pricing" },
+    { name: "블로그", href: "/blog" },
+    { name: "문의하기", href: "/contact" },
 ]
 
 export function Header() {
@@ -27,23 +29,20 @@ export function Header() {
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
 
+    const isLightModeHeader = isScrolled || !isHome;
+
     return (
         <header
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-                isScrolled || !isHome
-                    ? "bg-white/80 backdrop-blur-md border-b shadow-sm py-4"
+                isLightModeHeader
+                    ? "bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm py-4"
                     : "bg-transparent py-6"
             )}
         >
-            <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
+            <div className="container mx-auto flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2">
-                    <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-lg">
-                        E
-                    </div>
-                    <span className="text-xl font-bold tracking-tight text-primary">
-                        EduScale
-                    </span>
+                    <img src="/images/logo.png" alt="Classin Logo" className="h-7 md:h-8 w-auto object-contain" />
                 </Link>
 
                 <nav className="hidden md:flex items-center gap-8">
@@ -52,8 +51,10 @@ export function Header() {
                             key={item.name}
                             href={item.href}
                             className={cn(
-                                "text-sm font-medium transition-colors hover:text-primary",
-                                pathname === item.href ? "text-primary font-bold" : "text-muted-foreground"
+                                "text-sm font-medium transition-colors",
+                                pathname === item.href
+                                    ? (isLightModeHeader ? "text-primary font-bold" : "text-white font-bold")
+                                    : (isLightModeHeader ? "text-slate-600 hover:text-primary" : "text-slate-300 hover:text-white")
                             )}
                         >
                             {item.name}
@@ -61,13 +62,17 @@ export function Header() {
                     ))}
                 </nav>
 
-                <div className="flex items-center gap-4">
-                    <Link href="#" className="hidden sm:block text-sm font-medium text-primary hover:underline">
-                        Login
-                    </Link>
+                <div className="flex items-center gap-3 md:gap-4">
+                    <Button variant="ghost" size="sm" onClick={() => trackEvent('download_materials')} className={cn("hidden md:flex font-medium transition-colors hover:bg-transparent",
+                         isLightModeHeader ? "text-slate-600 hover:text-primary" : "text-white/80 hover:text-white"
+                    )}>
+                        자료 받아보기
+                    </Button>
                     <DemoModal>
-                        <Button size="sm" className="font-semibold shadow-lg">
-                            Book a Demo
+                        <Button size="sm" onClick={() => trackEvent('click_cta', { button: 'header_demo' })} className={cn("font-semibold shadow-lg transition-all",
+                            isLightModeHeader ? "bg-primary hover:bg-primary/90 text-white" : "bg-white hover:bg-white/90 text-slate-950"
+                        )}>
+                            도입 문의
                         </Button>
                     </DemoModal>
                 </div>

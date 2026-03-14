@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/sections/Header";
-import { Footer } from "@/components/sections/Footer";
+import { FloatingChatbot } from "@/components/ui/FloatingChatbot";
+import { AnalyticsProviders } from "@/components/AnalyticsProviders";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "EduScale | The All-in-One Operating System for Academies",
-  description: "Standardize teaching quality, automate admin work, and guarantee learning outcomes with EduScale's data-driven platform.",
+  title: "Classin | 학원 운영시스템의 모든 것",
+  description: "데이터 기반의 학원 관리 플랫폼 Classin으로 교육 품질을 표준화하고, 행정 업무를 자동화하며, 학습 성과를 보장하세요.",
 };
 
 export default function RootLayout({
@@ -17,13 +16,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={inter.className}>
+    <html lang="ko" className="scroll-smooth">
+      <body>
         <Header />
         <main className="min-h-screen bg-background font-sans antialiased selection:bg-primary/20 selection:text-primary">
           {children}
         </main>
-        <Footer />
+        <FloatingChatbot />
+        <AnalyticsProviders />
       </body>
     </html>
   );

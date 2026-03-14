@@ -15,9 +15,9 @@ export function PageHeader({
 }: PageHeaderProps) {
     return (
         <section className={cn("bg-slate-50 pt-32 pb-12 md:pb-20 md:pt-40", className)}>
-            <div className="container px-4 md:px-6">
+            <div className="container">
                 <div className="flex flex-col items-center text-center max-w-3xl mx-auto space-y-4">
-                    <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+                    <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
                         {heading}
                     </h1>
                     {text && (

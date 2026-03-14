@@ -3,6 +3,8 @@ import { ProblemCost } from "@/components/sections/ProblemCost"
 import { SolutionOverview } from "@/components/sections/SolutionOverview"
 import { KeyUseCases } from "@/components/sections/KeyUseCases"
 import { DashboardPreview } from "@/components/sections/DashboardPreview"
+import { ScienceBased } from "@/components/sections/ScienceBased"
+import { SatisfyingClass } from "@/components/sections/SatisfyingClass"
 import { Outcomes } from "@/components/sections/Outcomes"
 import { CaseStudies } from "@/components/sections/CaseStudies"
 import { FAQ } from "@/components/sections/FAQ"
@@ -16,6 +18,8 @@ export default function LandingPage() {
       <SolutionOverview />
       <KeyUseCases />
       <DashboardPreview />
+      <ScienceBased />
+      <SatisfyingClass />
       <Outcomes />
       <CaseStudies />
       <FAQ />
