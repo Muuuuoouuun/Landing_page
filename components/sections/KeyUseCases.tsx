@@ -108,7 +108,7 @@ function UseCaseCard({ title, desc, points, imageColor, imageSrc, imageAlt }: { 
                             <motion.img 
                                 src={imageSrc} 
                                 alt={imageAlt || title}
-                                className="absolute -bottom-8 -right-8 w-64 md:w-80 h-auto z-20 drop-shadow-2xl mix-blend-multiply"
+                                className="absolute -bottom-8 -right-8 w-64 md:w-80 h-auto z-20 drop-shadow-2xl"
                                 animate={{ y: [0, -12, 0] }}
                                 transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
                             />
